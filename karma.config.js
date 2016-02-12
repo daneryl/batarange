@@ -2,8 +2,7 @@ var path = require('path');
 
 module.exports = function (config) {
   config.set({
-    browsers: ['Chrome'],
-    singleRun: false,
+    browsers: ['Firefox'],
     coverageReporter: {
       reporters: [
         { type: 'html', subdir: 'html' },
