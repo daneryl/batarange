@@ -25,7 +25,7 @@ module.exports = function (config) {
       module: {
         preLoaders: [
           {
-            test: /-test\.js$/,
+            test: /\.spec\.js$/,
             include: /src/,
             exclude: /(bower_components|node_modules)/,
             loader: 'babel',

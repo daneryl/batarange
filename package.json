@@ -9,8 +9,8 @@
   },
   "scripts": {
     "build": "npm run clean && npm run build:dev && npm run build:prd",
-    "build:dev": "webpack src/Calculator.js dist/calculator.js --config tools/webpack.config.dev.js",
-    "build:prd": "webpack src/Calculator.js dist/calculator.min.js --config tools/webpack.config.prd.js",
+    "build:dev": "webpack src/TextPosition.js dist/TextPosition.js --config tools/webpack.config.dev.js",
+    "build:prd": "webpack src/TextPosition.js dist/TextPosition.min.js --config tools/webpack.config.prd.js",
     "prepublish": "npm run build",
     "clean": "rimraf dist build",
     "lint": "eslint src",
@@ -39,6 +39,7 @@
     "karma-webpack": "^1.7.0",
     "loader-utils": "^0.2.12",
     "rimraf": "^2.5.0",
-    "webpack": "^1.12.11"
+    "webpack": "^1.12.11",
+    "jquery": "2.2.0"
   }
 }
