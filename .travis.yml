@@ -4,3 +4,10 @@ node_js:
 before_script:
   - export DISPLAY=:99.0
   - sh -e /etc/init.d/xvfb start
+addons:
+  code_climate:
+    repo_token:
+      secure: "FYk6uQd4J0Sxnx9ds+F19T0ZL75HHD/mExDL6U0wvCioZOtOjyAi2oNannN5fPDtwY3hBNnOi2KdXNqtc8tq56UiyCvd2zKsk2WI/DEpirUKC0uNYwW0DivB1mEqfndVe+wf8Pe473+os7M8Si9knkh/PDmhRZaEePvRagQq4yCtkJAvwiQiXZ+zXjMgyunFk6GGDN3jnsuEDPIXcPSaaYM3/o/pZAxdtKN8rqgUuORjWz2HwHzYI1jqw1mZWQYITVwRgus63K5Be14amg8M6XyqUZ+be+IRj+M1ygc4uMZ7p2oRbOKb6wbsd3sfkXfiao6YPXzFl3ghKBhk20MuQNJRPytoEg225yhSQhCiqV7raf+AyH2qtINO5BRlfxW8Ke8GSrpnC3JVSM3FXZULSclp1nL77TxeD6KdNMiTqR988v79oVn+zmXKcBWwF/MNDirVW5PaRLLXNlGL3ZEWRtA993PRbd3DCop1MsIsSCRss2JZu/3klQlUllI/IW4StjzGRboQ+XHhmEcY2N6C41cBOo317EKSJ99CU5bR6w4LKTu5t6fBSNXegOHqhoUx1X077OvxDcqusLLwpJzySDkmClD/YImC4QLFG0GLUn5+xMEo/rJNmCBRBsuNb1j2SiFnzL/68hiepPTFL/jv/6E8Zf3xW7asd8mMoWkjM/o="
+
+after_success:
+  - codeclimate < ./coverage/lcov.info
