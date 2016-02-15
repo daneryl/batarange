@@ -36,7 +36,7 @@ module.exports = function (config) {
           {
             test: /\.js?$/,
             include: /src/,
-            exclude: /(node_modules|bower_components|__tests__)/,
+            exclude: /(node_modules|bower_components|specs)/,
             loader: 'babel-istanbul',
             query: {
               cacheDirectory: true,
