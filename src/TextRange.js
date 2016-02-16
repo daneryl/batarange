@@ -13,33 +13,36 @@ export default {
   },
 
   restore: (textPosition, rootNode) => {
-    let charIndex = 0, range = document.createRange();
-    let nodeStack = [rootNode], node;
+
+    let node,
+    charIndex = 0,
+    range = document.createRange(),
+    nodeStack = [rootNode]
 
     while (node = nodeStack.pop()) {
-      if (node.nodeType == 3) {
+      if (node.nodeType == Node.TEXT_NODE) {
 
         var nextCharIndex = charIndex + node.length;
 
-        if (textPosition.start >= charIndex && textPosition.start <= nextCharIndex) {
+        // demonstrate this with a test -> if (textPosition.start >= charIndex && textPosition.start <= nextCharIndex) {
+        if (textPosition.start >= charIndex) {
           range.setStart(node, textPosition.start - charIndex);
         }
 
-        if (textPosition.end >= charIndex && textPosition.end <= nextCharIndex) {
+        if (textPosition.end <= nextCharIndex) {
           range.setEnd(node, textPosition.end - charIndex);
           break;
         }
 
         charIndex = nextCharIndex;
-
-      } else {
-
-        var i = node.childNodes.length;
-        while (i--) {
-          nodeStack.push(node.childNodes[i]);
-        }
-
+        continue;
       }
+
+      var i = node.childNodes.length;
+      while (i--) {
+        nodeStack.push(node.childNodes[i]);
+      }
+
     }
 
     return range;
