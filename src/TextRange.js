@@ -27,14 +27,13 @@ export default {
         continue;
       }
 
-      var nextCharIndex = charIndex + node.length;
+      let nextCharIndex = charIndex + node.length;
 
-      // demonstrate this with a test -> if (textPosition.start >= charIndex && textPosition.start <= nextCharIndex)
-      if (textPosition.start >= charIndex) {
+      if (textPosition.start > charIndex && textPosition.start < nextCharIndex) {
         range.setStart(node, textPosition.start - charIndex);
       }
 
-      if (textPosition.end <= nextCharIndex) {
+      if (textPosition.end < nextCharIndex) {
         range.setEnd(node, textPosition.end - charIndex);
         break;
       }
