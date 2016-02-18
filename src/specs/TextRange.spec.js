@@ -3,7 +3,7 @@ import $ from 'jquery';
 
 describe('TextRange', () => {
 
-  let rootNode, range, range2;
+  let rootNode, range, range2, range3;
 
   beforeEach(() => {
     $(document.body).append(
@@ -11,6 +11,7 @@ describe('TextRange', () => {
       '<div id="container">'+
       '1234<span>567891</span>'+
       '1234<span>567891</span>'+
+      '<p>some text</p>'+
       '</div>'+
       '</div>'
     );
@@ -43,18 +44,23 @@ describe('TextRange', () => {
   });
 
   describe('restore()', () => {
-    describe('when start/end spans multiple nodes', () => {
-      it('when start/end are inside the same node', () => {
-        let restoredRange = TextRange.restore({start:2, end:5}, rootNode);
-        expect(restoredRange.toString()).toBe(range.toString());
-      });
+    it('should restore when range spans multiple nodes', () => {
+      let restoredRange = TextRange.restore({start:2, end:5}, rootNode);
+      expect(restoredRange.toString()).toBe(range.toString());
     });
 
-    describe('when start/end are inside the same node', () => {
-      it('should restore the range correctly', () => {
-        let restoredRange = TextRange.restore({start:6, end:8}, rootNode);
-        expect(restoredRange.toString()).toBe(range2.toString());
-      });
+    it('should restore when range its inside the same node', () => {
+      let restoredRange = TextRange.restore({start:6, end:8}, rootNode);
+      expect(restoredRange.toString()).toBe(range2.toString());
+    });
+
+    it('should restore when range startOffset is 0', () => {
+      let range3 = document.createRange();
+      range3.setStart(rootNode.childNodes[4].childNodes[0], 0);
+      range3.setEnd(rootNode.childNodes[4].childNodes[0], 4);
+
+      let restoredRange = TextRange.restore({start:20, end:24}, rootNode);
+      expect(restoredRange.toString()).toBe(range3.toString());
     });
   });
 

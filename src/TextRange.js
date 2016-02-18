@@ -29,7 +29,7 @@ export default {
 
       let nextCharIndex = charIndex + node.length;
 
-      if (textPosition.start > charIndex && textPosition.start < nextCharIndex) {
+      if (textPosition.start >= charIndex && textPosition.start < nextCharIndex) {
         range.setStart(node, textPosition.start - charIndex);
       }
 
