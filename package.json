@@ -2,15 +2,15 @@
   "name": "batarange",
   "version": "0.1.0",
   "description": "",
-  "main": "dist/calculator.js",
+  "main": "dist/TextRange.js",
   "repository": {
     "type": "git",
     "url": "https://github.com/daneryl/batarange"
   },
   "scripts": {
     "build": "npm run clean && npm run build:dev && npm run build:prd",
-    "build:dev": "webpack src/TextPosition.js dist/TextPosition.js --config tools/webpack.config.dev.js",
-    "build:prd": "webpack src/TextPosition.js dist/TextPosition.min.js --config tools/webpack.config.prd.js",
+    "build:dev": "webpack src/TextRange.js dist/TextRange.js --config tools/webpack.config.dev.js",
+    "build:prd": "webpack src/TextPosition.js dist/TextRange.min.js --config tools/webpack.config.prd.js",
     "prepublish": "npm run build",
     "clean": "rimraf dist build",
     "lint": "eslint src",
