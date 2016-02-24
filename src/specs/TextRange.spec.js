@@ -36,10 +36,10 @@ describe('TextRange', () => {
     $('#root').remove();
   });
 
-  describe('getSelected()', () => {
+  describe('serialize()', () => {
     it('should return an object with end/start number of characters based on a root node', () => {
-      let range = TextRange.getSelected(rootNode);
-      expect(range).toEqual({start:2, end: 5});
+      let serialized = TextRange.serialize(range, rootNode);
+      expect(serialized).toEqual({start:2, end: 5});
     });
   });
 

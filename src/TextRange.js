@@ -1,13 +1,12 @@
 export default {
 
-  getSelected: (rootNode) => {
+  serialize: (range, rootNode) => {
 
-    let selectedRange = window.getSelection().getRangeAt(0);
-    let start = getStartCharacterFor(selectedRange, rootNode);
+    let start = getStartCharacterFor(range, rootNode);
 
     return {
       start: start,
-      end: start + selectedRange.toString().length
+      end: start + range.toString().length
     };
 
   },
